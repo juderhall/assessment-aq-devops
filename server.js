@@ -14,8 +14,6 @@ var rollbar = new Rollbar({
   captureUnhandledRejections: true,
 })
 
-rollbar.log("Hello World!")
-
 app.get('/api/robots', (req, res) => {
     try {
         res.status(200).send(botsArr)
@@ -23,6 +21,7 @@ app.get('/api/robots', (req, res) => {
         console.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
     }
+    rollbar.log("User request to see all bots")
 })
 
 app.get('/api/robots/five', (req, res) => {
@@ -35,6 +34,7 @@ app.get('/api/robots/five', (req, res) => {
         console.log('ERROR GETTING FIVE BOTS', error)
         res.sendStatus(400)
     }
+    rollbar.log("User started a duel")
 })
 
 app.post('/api/duel', (req, res) => {
@@ -58,9 +58,11 @@ app.post('/api/duel', (req, res) => {
         if (compHealthAfterAttack > playerHealthAfterAttack) {
             playerRecord.losses++
             res.status(200).send('You lost!')
+            rollbar.log("User lost duel")
         } else {
             playerRecord.losses++
             res.status(200).send('You won!')
+            rollbar.log("User won duel")
         }
     } catch (error) {
         console.log('ERROR DUELING', error)
@@ -75,6 +77,7 @@ app.get('/api/player', (req, res) => {
         console.log('ERROR GETTING PLAYER STATS', error)
         res.sendStatus(400)
     }
+    rollbar.log("User request record")
 })
 
 app.listen(4000, () => {
