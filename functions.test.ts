@@ -11,8 +11,4 @@ describe('shuffleArray should', () => {
         // let array = [1, 2 , 3, 4]
         expect(shuffleArray(array).length).toEqual(array.length)
     })
-
-    test("shufflyArray should retyrn the same values of the argument sent in", () => {
-        expect()
-    })
 })
