@@ -7,7 +7,14 @@ const {shuffleArray} = require('./utils')
 app.use(cors())
 app.use(express.json())
 
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: '0f588962142d492f93c2e45c8b5e9508',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
 
+rollbar.log("Hello World!")
 
 app.get('/api/robots', (req, res) => {
     try {

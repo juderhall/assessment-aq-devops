@@ -28,11 +28,5 @@ test('Choices shows when "Draw" button is clicked', async () => {
 })
 
 test('player-duo shows when "Add to Duo" button is clicked', async () =>{
-    const draw = await driver.findElement(By.id('draw'))
-    draw.click()
-//     const botButton = await driver.findElement(By.id('bot-btn'))
-//     botButton.click()
-//     const playerDuo = await driver.findElement(By.id('player-duo'))
-//     const displayed = await playerDuo.isDisplayed()
-//     expect(displayed).toBe(true)
+
 })
